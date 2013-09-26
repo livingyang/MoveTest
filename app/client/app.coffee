@@ -149,6 +149,24 @@ testColliejs = ->
 		collie.Renderer.load(document.getElementById("container"))
 		collie.Renderer.start()
 	
+testCreateJs = ->
+
+Template.move.events "click .play": =>
+	move('#example-10 .box1').skew(50).x(400).end();
+	move('#example-10 .box2').ease('in').skew(50).x(400).end();
+	move('#example-10 .box3').ease('out').skew(50).x(400).end();
+	move('#example-10 .box4').ease('in-out').skew(50).x(400).end();
+	move('#example-10 .box5').ease('snap').skew(50).x(400).end();
+	move('#example-10 .box6').ease('cubic-bezier(0,1,1,0)').skew(50).x(400).end();
+
+	setTimeout( ->
+		move('#example-10 .box1').x(0).end();
+		move('#example-10 .box2').x(0).end();
+		move('#example-10 .box3').x(0).end();
+		move('#example-10 .box4').x(0).end();
+		move('#example-10 .box5').x(0).end();
+		move('#example-10 .box6').x(0).end();
+	, 1200)
 
 Meteor.startup ->
 	# @loadImages()
@@ -157,6 +175,7 @@ Meteor.startup ->
 	console.log new Date()
 		
 	# testKinect()
-	testColliejs()
+	# testColliejs()
+	# testCreateJs();
 
 # code to run on server at startup
