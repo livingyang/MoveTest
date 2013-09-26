@@ -2,12 +2,20 @@
 
 
 .box {
-  margin: 5px;
+  /*margin: 5px;*/
   border: 1px solid #888;
   font-size: 11px;
   text-align: center;
   line-height: 50px;
   /*background-image: */
+}
+
+.red {
+	background-color: red;
+}
+
+.gray {
+	background-color: gray;
 }
 
 .small {

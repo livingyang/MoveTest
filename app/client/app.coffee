@@ -168,6 +168,16 @@ Template.move.events "click .play": =>
 		move('#example-10 .box6').x(0).end();
 	, 1200)
 
+Template.transit.events "click input": ->
+	$("#box").css(perspective: 100)
+	# return;
+	$('#box').transition
+		# perspective: '100px',
+		rotateX: '180deg'
+	.transition
+		# perspective: '100px',
+		rotateX: '0deg'
+
 Meteor.startup ->
 	# @loadImages()
 	
