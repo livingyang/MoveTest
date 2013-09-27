@@ -22,3 +22,7 @@
   width: 200px;
   height: 200px;
 }
+
+.well.fight {
+  background-image: url("/scene1.jpg");
+}
