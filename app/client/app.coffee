@@ -226,15 +226,6 @@ breakScreen = ->
 		duration: 1000
 
 Template.transit.events "click #click1": ->
-	count = 10
-	turnAttack = ->
-		return if count < 0
-		count--
-
-		attackEnemy ->
-			enemyAttack -> turnAttack()
-
-	turnAttack()
 
 attackEnemy = (callback) ->
 
@@ -265,28 +256,6 @@ attackEnemy = (callback) ->
 		duration: 50
 	.transition {}, -> callback?()
 
-		# $(".cards-container")
-		# .css
-		# 	x: -400
-		# 	y: 1000
-		# 	opacity: 1
-		# 	rotate3d : '0, 0, 0, 0deg'
-		# 	scale: 1
-		# .transition
-		# 	y: 100
-		# .transition
-		# 	rotate3d : '0.7, 0.5, 0.7, 45deg'
-		# .transition
-		# 	x: 0
-		# 	y: 0
-		# 	scale: 0.1, 300, "in", ->
-		# 		randomEnemy()
-		# 		flashScreen()
-		# .transition
-		# 	opacity: 0
-		# 	duration: 50
-		# .transition {}, -> callback?()
-
 Template.transit.events "click #click2": ->
 	attackEnemy -> console.log "done!!"
 	
@@ -300,6 +269,17 @@ enemyAttack = (callback) ->
 
 Template.transit.events "click #click3": ->
 	enemyAttack -> console.log "enemyAttack"
+
+Template.transit.events "click #click4": ->
+	count = 10
+	turnAttack = ->
+		return if count < 0
+		count--
+
+		attackEnemy ->
+			enemyAttack -> turnAttack()
+
+	turnAttack()
 	
 Meteor.startup ->
 	# @loadImages()
