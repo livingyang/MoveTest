@@ -33,11 +33,22 @@ body {
   height: 200px;
 }
 
-.well.fight {
+.fight {
+  min-height: 100%;
+  height: 100%;
+  min-width: 100%;
+  width: 100%;
+}
+
+.background {
+
+  position: absolute;
   background-image: url("/scene1.jpg");
   background-size: cover;
+  min-height: 100%;
   height: 100%;
-  background-attachment:fixed;
+  min-width: 100%;
+  width: 100%;
   background-position:center;
 }
 
@@ -57,24 +68,27 @@ body {
   left: -130px;
 }
 
+.cards-container {
+  /*z-index: 100;*/
+}
+
 .offset-card1 {
   position: absolute;
   top: -181px;
   left: -390px;
-  z-index:100;
 }
 .offset-card2 {
   position: absolute;
   top: -181px;
   left: -130px;
-  z-index:100;
 }
 .offset-card3 {
   position: absolute;
   top: -181px;
   left: 130px;
-  z-index:100;
 }
+
+
 
 .fightPos {
   position: absolute;
@@ -82,4 +96,20 @@ body {
   right: 30%;
   width: 0px;
   height: 0px;
+}
+
+.screen-effect {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.screen-flash {
+  background-color: white;
+  opacity: 0;
+}
+
+.screen-break {
+  background-image: url("/screen-break.png");
+  opacity: 0;  
 }

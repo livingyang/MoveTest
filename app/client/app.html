@@ -31,20 +31,28 @@
 
 <template name="transit">
 
-	<input type="button" value="Click1" id="click1"/>
-	<input type="button" value="Click2" id="click2"/>
-	<input type="button" value="Reset" id="reset"/>
-	<div class="well fight">
+	<div class="background"></div>
+	<div class="fight">
 		<div class="fightPos" id="enemy">
 			<div class="card offset-card"></div>
 		</div>
+		<div style="position:absolute; height: 100%; width: 100%;">
 		<div class="cards-container fightPos">
 			<div class="card offset-card1"></div>
 			<div class="card offset-card2"></div>
 			<div class="card offset-card3"></div>
 		</div>
+		</div>
+		<div class="screen-effect screen-flash"></div>
+		<div class="screen-effect screen-break"></div>
 	</div>
 		
+	<div style="position:absolute;top: 30%;">
+		<input type="button" value="Click1" id="click1"/>
+		<input type="button" value="我方攻击" id="click2"/>
+		<input type="button" value="敌方攻击" id="click3"/>
+		<input type="button" value="Reset" id="reset"/>
+	</div>
 </template>
 
 <template name="move">

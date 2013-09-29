@@ -169,16 +169,21 @@ Template.move.events "click .play": =>
 	, 1200)
 
 Template.transit.events "click #reset": ->
+	$(".offset-card3")
+	.css
+		x: -400
+		y: 1000
+		opacity: 1
+		rotate3d : '0, 0, 0, 0deg'
+		scale: 1
+	.transition
+		y: 100
+	.transition
+		rotate3d : '0.7, 0.5, 0.7, 45deg'
+	return
 	$(".cards-container").css
 		x: -400
 		y: 1000
-		rotate3d : '0, 0, 0, 0deg'
-		scale: 1
-	return
-	$("#cards").css
-		perspective: 0
-		x: 0
-		y: 0
 		rotate3d : '0, 0, 0, 0deg'
 		scale: 1
 
@@ -197,37 +202,105 @@ randomEnemy = ->
 	.transition(randomPos())
 	.transition x: 0, y: 0, duration: 50
 
+flashScreen = ->
+	$(".screen-flash")
+	.transition
+		opacity: 1
+		duration: 50
+	.transition
+		opacity: 0
+		duration: 50
+	.transition
+		opacity: 1
+		duration: 50
+	.transition
+		opacity: 0
+		duration: 50
+
+breakScreen = ->
+	$(".screen-break").transition
+		opacity: 1
+		duration: 50
+	.transition
+		opacity: 0
+		duration: 1000
+
 Template.transit.events "click #click1": ->
-	randomEnemy()
-	return
-	$("#cards").css
-		scale: [0.1, 0.1]
-		# rotateX: '45deg'
-	$("#cards").css
-		perspective: 100
+	count = 10
+	turnAttack = ->
+		return if count < 0
+		count--
+
+		attackEnemy ->
+			enemyAttack -> turnAttack()
+
+	turnAttack()
+
+attackEnemy = (callback) ->
+
+	for i in [1..3]
+		$(".offset-card#{i}").css rotate3d : '0, 0, 0, 0deg'
+	
+	$(".cards-container")
+	.css
+		x: -400
+		y: 1000
+		opacity: 1
+		scale: 1
+	.transition
+		y: 100, ->
+			for i in [1..3]
+				$(".offset-card#{i}").transition
+					rotate3d : "1, 1, 1, #{15 + i * 15}deg"
+	.transition
+		y: "+=1"
+	.transition
 		x: 0
-		y: 100
+		y: 0
+		scale: 0.1, 300, "in", ->
+			randomEnemy()
+			flashScreen()
+	.transition
+		opacity: 0
+		duration: 50
+	.transition {}, -> callback?()
+
+		# $(".cards-container")
+		# .css
+		# 	x: -400
+		# 	y: 1000
+		# 	opacity: 1
+		# 	rotate3d : '0, 0, 0, 0deg'
+		# 	scale: 1
+		# .transition
+		# 	y: 100
+		# .transition
+		# 	rotate3d : '0.7, 0.5, 0.7, 45deg'
+		# .transition
+		# 	x: 0
+		# 	y: 0
+		# 	scale: 0.1, 300, "in", ->
+		# 		randomEnemy()
+		# 		flashScreen()
+		# .transition
+		# 	opacity: 0
+		# 	duration: 50
+		# .transition {}, -> callback?()
 
 Template.transit.events "click #click2": ->
-	# $("#cards-container").transition y: -300, ->
-	# 	$("#cards-container").transition
-	# 		y: "-=100"
-	# 		x: "+=300"
-
-	# 	$("#cards").css
-	# 	 perspective: 100
-
-		$(".cards-container")
-		.transition
-			y: 100
-		.transition
-			rotate3d : '0.7, 0.5, 0.7, 45deg'
-		.transition
-			x: 0
-			y: 0
-			scale: 0.1, 300, "in", -> randomEnemy()
+	attackEnemy -> console.log "done!!"
 	
+enemyAttack = (callback) ->
+	breakScreen()
+	$("#enemy").transition
+		scale: 1.5, 50
+	.transition
+		scale: 1
+	.transition {}, -> callback?()
 
+Template.transit.events "click #click3": ->
+	enemyAttack -> console.log "enemyAttack"
+	
 Meteor.startup ->
 	# @loadImages()
 	
