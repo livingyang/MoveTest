@@ -25,8 +25,6 @@
 	<div id="cards-container" class="container">
 		<div id="cards" class="container">
 			{{> 3Card}}
-			{{> 3Card}}
-			{{> 3Card}}
 		</div>
 	</div>
 </template>
@@ -37,10 +35,14 @@
 	<input type="button" value="Click2" id="click2"/>
 	<input type="button" value="Reset" id="reset"/>
 	<div class="well fight">
-		<div class="row">
-			<img src="p1.jpg" id="enemy" class="img-responsive pull-right" alt="Responsive image"/>
+		<div class="fightPos" id="enemy">
+			<div class="card offset-card"></div>
 		</div>
-		{{> cards}}
+		<div class="cards-container fightPos">
+			<div class="card offset-card1"></div>
+			<div class="card offset-card2"></div>
+			<div class="card offset-card3"></div>
+		</div>
 	</div>
 		
 </template>

@@ -169,11 +169,9 @@ Template.move.events "click .play": =>
 	, 1200)
 
 Template.transit.events "click #reset": ->
-	$("#cards-container").css
-		x: 0
-		y: 0
-
-	$("#cards").css
+	$(".cards-container").css
+		x: -400
+		y: 1000
 		rotate3d : '0, 0, 0, 0deg'
 		scale: 1
 	return
@@ -211,54 +209,24 @@ Template.transit.events "click #click1": ->
 		y: 100
 
 Template.transit.events "click #click2": ->
+	# $("#cards-container").transition y: -300, ->
+	# 	$("#cards-container").transition
+	# 		y: "-=100"
+	# 		x: "+=300"
 
-	$("#cards-container").transition y: -300, ->
-		$("#cards-container").transition
-			y: "-=100"
-			x: "+=300"
+	# 	$("#cards").css
+	# 	 perspective: 100
 
-		$("#cards").css
-		 perspective: 100
-
-		$("#cards")
+		$(".cards-container")
+		.transition
+			y: 100
 		.transition
 			rotate3d : '0.7, 0.5, 0.7, 45deg'
-		.transition scale: 0.1, 300, "in", -> randomEnemy()
-	return;
-	# $("#cards").css
-	# 	perspective: 100
-	# 	x: 0
-	# 	y: 100
-	# $("#cards").css
-	# 	scale: [0.1, 0.1]
-	# 	rotateX: '45deg'
-	# return
-	$("#cards").css(perspective: 100)
-
-	# $("#cards").css x: 0, y: 40, scale: [0.1, 0.1], rotateX: '45deg'
-	# return
-	$('#cards')
-	# .css
-		# transformOrigin: '100px -100px'
-	.transition
-		y: -500
-	.transition
-		# perspective: '100px',
-		# rotateX: '45deg'
-		# rotateY: '0deg'
-		rotate3d : '0.7, 0.5, 0.7, 45deg'
-	.transition
-		# perspective: 1000
-		x: 1000
-		# rotateX: '45deg'
-		y: -1000
-		scale: [0.5, 0.5, 0.5]
-	# .transition
-	# 	# perspective: '100px',
-	# 	rotateX: '0deg'
-	# 	x: 0
-	# 	y: 0
-	# 	scale: 1
+		.transition
+			x: 0
+			y: 0
+			scale: 0.1, 300, "in", -> randomEnemy()
+	
 
 Meteor.startup ->
 	# @loadImages()

@@ -40,3 +40,46 @@ body {
   background-attachment:fixed;
   background-position:center;
 }
+
+.card {
+  width: 260px;
+  min-height: 363px;
+  height: 363px;
+  background-image: url("/p1.jpg");
+  /*background-size: cover;*/
+  /*background-attachment:fixed;*/
+  /*background-position:center;*/
+}
+
+.offset-card {
+  position: absolute;
+  top: -181px;
+  left: -130px;
+}
+
+.offset-card1 {
+  position: absolute;
+  top: -181px;
+  left: -390px;
+  z-index:100;
+}
+.offset-card2 {
+  position: absolute;
+  top: -181px;
+  left: -130px;
+  z-index:100;
+}
+.offset-card3 {
+  position: absolute;
+  top: -181px;
+  left: 130px;
+  z-index:100;
+}
+
+.fightPos {
+  position: absolute;
+  top: 50%;
+  right: 30%;
+  width: 0px;
+  height: 0px;
+}
