@@ -225,7 +225,14 @@ breakScreen = ->
 		opacity: 0
 		duration: 1000
 
+randomHealth = ->
+	$("#bar-my").width "#{100 * Math.random()}%"
+	$("#bar-enemy").width "#{100 * Math.random()}%"
+	$("#hp-my").text Math.floor 10000 * Math.random()
+	$("#hp-enemy").text Math.floor 10000 * Math.random()
+
 Template.transit.events "click #click1": ->
+	$("#hp-enemy").animate text: Math.floor 10000 * Math.random()
 
 attackEnemy = (callback) ->
 
@@ -251,6 +258,7 @@ attackEnemy = (callback) ->
 		scale: 0.1, 300, "in", ->
 			randomEnemy()
 			flashScreen()
+			randomHealth()
 	.transition
 		opacity: 0
 		duration: 50
@@ -261,8 +269,9 @@ Template.transit.events "click #click2": ->
 	
 enemyAttack = (callback) ->
 	breakScreen()
-	$("#enemy").transition
-		scale: 1.5, 50
+	$("#enemy")
+	.transition
+		scale: 1.5, 50, -> randomHealth()
 	.transition
 		scale: 1
 	.transition {}, -> callback?()

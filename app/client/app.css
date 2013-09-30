@@ -113,3 +113,27 @@ body {
   background-image: url("/screen-break.png");
   opacity: 0;  
 }
+
+.bg-bar {
+  background-color: gray;
+  opacity: 0.8;
+  width: 600px;
+  height: 50px;
+  position: absolute;
+}
+
+.bg-bar-right {
+  right: 50px;
+  top: 0px;  
+}
+
+.bg-bar-left {
+  left: 50px;
+  bottom: 0px;
+}
+
+.hp {
+  width: 100px;
+  max-width: 100px;
+  min-width: 100px;
+}
