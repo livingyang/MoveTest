@@ -137,3 +137,19 @@ body {
   max-width: 100px;
   min-width: 100px;
 }
+
+.damage-my {
+  position: absolute;
+  top: 70%;
+  left: 30%;
+  width: 0px;
+  height: 0px;
+}
+
+.damage-enemy {
+  position: absolute;
+  top: 40%;
+  right: 30%;
+  width: 0px;
+  height: 0px;
+}

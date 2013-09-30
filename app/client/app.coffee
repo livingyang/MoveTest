@@ -230,9 +230,27 @@ randomHealth = ->
 	$("#bar-enemy").width "#{100 * Math.random()}%"
 	$("#hp-my").text Math.floor 10000 * Math.random()
 	$("#hp-enemy").text Math.floor 10000 * Math.random()
+	
+	$(".damage").each ->
+		$(this).text Math.floor 10000 * Math.random()
 
+	$(".damage")
+	.css
+		x: 0
+		y: 0
+		opacity: 1
+		scale: 1
+	.transition
+		scale: 0.75
+	.transition
+		opacity: 0
+		scale: 1
 Template.transit.events "click #click1": ->
-	$("#hp-enemy").animate text: Math.floor 10000 * Math.random()
+	randomHealth()
+	# $("#hp-enemy").animate text: Math.floor 10000 * Math.random()
+	# $(".damage").each ->
+		# console.log $(this)
+		# $(this).text Math.floor 10000 * Math.random()
 
 attackEnemy = (callback) ->
 
